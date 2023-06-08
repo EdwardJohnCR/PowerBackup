@@ -1,0 +1,3062 @@
+[
+    {
+        "id": "f116165dd87bee19",
+        "type": "subflow",
+        "name": "Arranque de planta",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 420,
+                "wires": [
+                    {
+                        "id": "8f27dc428549c040"
+                    },
+                    {
+                        "id": "ea6192adadad5da6"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1140,
+                "y": 440,
+                "wires": [
+                    {
+                        "id": "61cb1aa7d18c4f27",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "color": "#DDAA99"
+    },
+    {
+        "id": "c02c271cd92bc452",
+        "type": "ui_led",
+        "z": "f116165dd87bee19",
+        "group": "84889070814cc770",
+        "order": 22,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#000000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "AIR",
+        "x": 1010,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "7454df23fff78b67",
+        "type": "ui_text",
+        "z": "f116165dd87bee19",
+        "group": "84889070814cc770",
+        "order": 23,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "AIR",
+        "format": "",
+        "layout": "col-center",
+        "x": 1122.000015258789,
+        "y": 160.00000190734863,
+        "wires": []
+    },
+    {
+        "id": "a13e457e224e18a3",
+        "type": "trigger",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "op1": "true",
+        "op2": "1",
+        "op1type": "bool",
+        "op2type": "num",
+        "duration": "6",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 820,
+        "y": 160,
+        "wires": [
+            [
+                "c02c271cd92bc452"
+            ]
+        ]
+    },
+    {
+        "id": "caca83d86b0a37ba",
+        "type": "rpi-gpio out",
+        "z": "f116165dd87bee19",
+        "name": "RELAY MOTOR #23",
+        "pin": "11",
+        "set": true,
+        "level": "1",
+        "freq": "",
+        "out": "out",
+        "x": 1060,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "143833acb1e86f36",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "NO",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 240,
+        "wires": [
+            [
+                "bfb824ad88c852d9",
+                "f69e21b171f0f464",
+                "33b3ae52409b75d1",
+                "caca83d86b0a37ba",
+                "82ee9125ed21a32b",
+                "a13e457e224e18a3"
+            ]
+        ]
+    },
+    {
+        "id": "bfb824ad88c852d9",
+        "type": "delay",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "6",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 880,
+        "y": 340,
+        "wires": [
+            [
+                "4a7cf33a6d7588c3"
+            ]
+        ]
+    },
+    {
+        "id": "4a7cf33a6d7588c3",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 380,
+        "wires": [
+            [
+                "caca83d86b0a37ba"
+            ]
+        ]
+    },
+    {
+        "id": "d24bdc45b8a0cfd9",
+        "type": "rpi-gpio out",
+        "z": "f116165dd87bee19",
+        "name": "ARRANQUE #16",
+        "pin": "23",
+        "set": true,
+        "level": "1",
+        "freq": "",
+        "out": "out",
+        "x": 1310,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "f69e21b171f0f464",
+        "type": "delay",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 820,
+        "y": 40,
+        "wires": [
+            [
+                "d24bdc45b8a0cfd9",
+                "500afc716a1e56f3"
+            ]
+        ]
+    },
+    {
+        "id": "7c29a441a72c7056",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1060,
+        "y": 100,
+        "wires": [
+            [
+                "d24bdc45b8a0cfd9",
+                "500afc716a1e56f3"
+            ]
+        ]
+    },
+    {
+        "id": "33b3ae52409b75d1",
+        "type": "delay",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 820,
+        "y": 100,
+        "wires": [
+            [
+                "7c29a441a72c7056"
+            ]
+        ]
+    },
+    {
+        "id": "500afc716a1e56f3",
+        "type": "ui_led",
+        "z": "f116165dd87bee19",
+        "group": "84889070814cc770",
+        "order": 25,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#ff9705",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "START",
+        "x": 1280,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "3509e6b2a5fde4e6",
+        "type": "ui_text",
+        "z": "f116165dd87bee19",
+        "group": "84889070814cc770",
+        "order": 26,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "START",
+        "format": "",
+        "layout": "col-center",
+        "x": 1420,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "870ea31382b64148",
+        "type": "rpi-gpio out",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pin": "25",
+        "set": "",
+        "level": "0",
+        "freq": "50",
+        "out": "pwm",
+        "x": 1760,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "01ebf55b47bf3c3c",
+        "type": "delay",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1300,
+        "y": 180,
+        "wires": [
+            [
+                "2c54e19fa52ddae7"
+            ]
+        ]
+    },
+    {
+        "id": "9638f5f5cdd5c59a",
+        "type": "delay",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1300,
+        "y": 220,
+        "wires": [
+            [
+                "21c78382a5134399"
+            ]
+        ]
+    },
+    {
+        "id": "2c54e19fa52ddae7",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "5",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1500,
+        "y": 180,
+        "wires": [
+            [
+                "870ea31382b64148",
+                "626cd65e86995761"
+            ]
+        ]
+    },
+    {
+        "id": "21c78382a5134399",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "7",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1500,
+        "y": 220,
+        "wires": [
+            [
+                "870ea31382b64148",
+                "626cd65e86995761"
+            ]
+        ]
+    },
+    {
+        "id": "1d3ae015fa68ef8d",
+        "type": "delay",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "4",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1300,
+        "y": 260,
+        "wires": [
+            [
+                "7b7067decb74e34f"
+            ]
+        ]
+    },
+    {
+        "id": "4049999908c9db69",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "2",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1500,
+        "y": 300,
+        "wires": [
+            [
+                "870ea31382b64148",
+                "626cd65e86995761"
+            ]
+        ]
+    },
+    {
+        "id": "a37a267ce88e14f6",
+        "type": "delay",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1300,
+        "y": 300,
+        "wires": [
+            [
+                "4049999908c9db69"
+            ]
+        ]
+    },
+    {
+        "id": "7b7067decb74e34f",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "5",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1500,
+        "y": 260,
+        "wires": [
+            [
+                "870ea31382b64148",
+                "626cd65e86995761"
+            ]
+        ]
+    },
+    {
+        "id": "c6a49ac9f10e15db",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "3",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1500,
+        "y": 140,
+        "wires": [
+            [
+                "870ea31382b64148",
+                "626cd65e86995761"
+            ]
+        ]
+    },
+    {
+        "id": "70e663f042769140",
+        "type": "delay",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "0.01",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1310,
+        "y": 140,
+        "wires": [
+            [
+                "c6a49ac9f10e15db"
+            ]
+        ]
+    },
+    {
+        "id": "db5b046789ae3d40",
+        "type": "delay",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "6",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1300,
+        "y": 340,
+        "wires": [
+            [
+                "744ae5b755532253"
+            ]
+        ]
+    },
+    {
+        "id": "744ae5b755532253",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1500,
+        "y": 340,
+        "wires": [
+            [
+                "870ea31382b64148",
+                "626cd65e86995761"
+            ]
+        ]
+    },
+    {
+        "id": "120a494ca63beb11",
+        "type": "ui_gauge",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "group": "0e600bbbe8304e71",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Servo Motor",
+        "label": "Posicion",
+        "format": "{{Value}}",
+        "min": 0,
+        "max": "180",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 1770,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "626cd65e86995761",
+        "type": "range",
+        "z": "f116165dd87bee19",
+        "minin": "0",
+        "maxin": "7",
+        "minout": "0",
+        "maxout": "180",
+        "action": "scale",
+        "round": false,
+        "property": "payload",
+        "name": "",
+        "x": 1740,
+        "y": 200,
+        "wires": [
+            [
+                "120a494ca63beb11"
+            ]
+        ]
+    },
+    {
+        "id": "82ee9125ed21a32b",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1060,
+        "y": 220,
+        "wires": [
+            [
+                "70e663f042769140",
+                "01ebf55b47bf3c3c",
+                "9638f5f5cdd5c59a",
+                "1d3ae015fa68ef8d",
+                "a37a267ce88e14f6",
+                "db5b046789ae3d40"
+            ]
+        ]
+    },
+    {
+        "id": "5473a70c246cb8e1",
+        "type": "rpi-gpio out",
+        "z": "f116165dd87bee19",
+        "name": "RUN # 12",
+        "pin": "18",
+        "set": true,
+        "level": "1",
+        "freq": "",
+        "out": "out",
+        "x": 1180,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "87505acc79c529c8",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 520,
+        "wires": [
+            [
+                "5473a70c246cb8e1",
+                "d6a1217fe6808b30",
+                "d5b14404c2544021"
+            ]
+        ]
+    },
+    {
+        "id": "d6a1217fe6808b30",
+        "type": "ui_led",
+        "z": "f116165dd87bee19",
+        "group": "84889070814cc770",
+        "order": 16,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#000000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "PLANTA OFF",
+        "x": 1200,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "155e9f88b36694ed",
+        "type": "ui_text",
+        "z": "f116165dd87bee19",
+        "group": "84889070814cc770",
+        "order": 17,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "GENERATOR  ON / OFF",
+        "format": "",
+        "layout": "col-center",
+        "x": 1390,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "d5b14404c2544021",
+        "type": "ui_led",
+        "z": "f116165dd87bee19",
+        "group": "84889070814cc770",
+        "order": 19,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#000000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "PLANTA EN RUN",
+        "x": 1210,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "7d91664d4855d100",
+        "type": "ui_text",
+        "z": "f116165dd87bee19",
+        "group": "84889070814cc770",
+        "order": 20,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "RUN",
+        "format": "",
+        "layout": "col-center",
+        "x": 1350,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "8f27dc428549c040",
+        "type": "delay",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "16",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "143833acb1e86f36"
+            ]
+        ]
+    },
+    {
+        "id": "ea6192adadad5da6",
+        "type": "delay",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 260,
+        "y": 660,
+        "wires": [
+            [
+                "87505acc79c529c8"
+            ]
+        ]
+    },
+    {
+        "id": "cc9bd8580b4e8f2d",
+        "type": "ui_button",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "group": "0e600bbbe8304e71",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Arranque de planta",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "x": 290,
+        "y": 440,
+        "wires": [
+            [
+                "8aba1558b6a3b946",
+                "87505acc79c529c8",
+                "61cb1aa7d18c4f27"
+            ]
+        ]
+    },
+    {
+        "id": "169f3bd95af4fe8e",
+        "type": "ui_button",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "group": "0e600bbbe8304e71",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Apagado de planta",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "topic",
+        "x": 330,
+        "y": 520,
+        "wires": [
+            [
+                "87505acc79c529c8"
+            ]
+        ]
+    },
+    {
+        "id": "8aba1558b6a3b946",
+        "type": "delay",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 500,
+        "y": 320,
+        "wires": [
+            [
+                "143833acb1e86f36"
+            ]
+        ]
+    },
+    {
+        "id": "61cb1aa7d18c4f27",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "32a54c24d1fd197a",
+        "type": "rpi-gpio in",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pin": "20",
+        "intype": "up",
+        "debounce": "",
+        "read": false,
+        "x": 260,
+        "y": 580,
+        "wires": [
+            [
+                "d4132d58c73f516a"
+            ]
+        ]
+    },
+    {
+        "id": "4cb23a35b0ee3fab",
+        "type": "rpi-gpio in",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "pin": "21",
+        "intype": "up",
+        "debounce": "",
+        "read": false,
+        "x": 280,
+        "y": 320,
+        "wires": [
+            [
+                "8aba1558b6a3b946",
+                "87505acc79c529c8"
+            ]
+        ]
+    },
+    {
+        "id": "d4132d58c73f516a",
+        "type": "change",
+        "z": "f116165dd87bee19",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 560,
+        "wires": [
+            [
+                "87505acc79c529c8"
+            ]
+        ]
+    },
+    {
+        "id": "0e600bbbe8304e71",
+        "type": "ui_group",
+        "name": "ARRANQUE",
+        "tab": "99b27e91bcc6aec5",
+        "order": 5,
+        "disp": true,
+        "width": "4",
+        "collapse": false
+    },
+    {
+        "id": "99b27e91bcc6aec5",
+        "type": "ui_tab",
+        "name": "AUTOMATIZACION",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "068dede10c89541d",
+        "type": "tab",
+        "label": "Automatizacion",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "111626268d132e1c",
+        "type": "rpi-gpio out",
+        "z": "068dede10c89541d",
+        "name": "RELE PLANTA #13",
+        "pin": "27",
+        "set": true,
+        "level": "1",
+        "freq": "",
+        "out": "out",
+        "x": 1490,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "33a98f03a271117a",
+        "type": "rpi-gpio out",
+        "z": "068dede10c89541d",
+        "name": "Relay ICE 11",
+        "pin": "17",
+        "set": true,
+        "level": "1",
+        "freq": "",
+        "out": "out",
+        "x": 750,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "1e8d22bda62e26b0",
+        "type": "ui_led",
+        "z": "068dede10c89541d",
+        "group": "84889070814cc770",
+        "order": 9,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#ff0000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "LED RELE ICE",
+        "x": 760,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "ab8cfd1b800e95dc",
+        "type": "ui_led",
+        "z": "068dede10c89541d",
+        "group": "36792de4d163b36c",
+        "order": 2,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#f00060",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "LED PLANTA",
+        "x": 740,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "507b3203f3c323a0",
+        "type": "rpi-gpio in",
+        "z": "068dede10c89541d",
+        "name": "SENSOR ICE",
+        "pin": "4",
+        "intype": "up",
+        "debounce": "",
+        "read": true,
+        "x": 130,
+        "y": 660,
+        "wires": [
+            [
+                "2f10edb2790f111f",
+                "30fb72b6443ae9ca",
+                "b7b89d4f0adffb30",
+                "7c57de93f3ebf072",
+                "625459ccb17f3303",
+                "f48ce1783fdeda3f"
+            ]
+        ]
+    },
+    {
+        "id": "bfd4b61897466f15",
+        "type": "rpi-gpio in",
+        "z": "068dede10c89541d",
+        "name": "SENSOR PLANTA",
+        "pin": "2",
+        "intype": "up",
+        "debounce": "",
+        "read": false,
+        "x": 130,
+        "y": 1140,
+        "wires": [
+            [
+                "e40a270cf8a3054c",
+                "55b18bcd245a15c1",
+                "640ce3a72d9f0815",
+                "4d558375311d5fc7",
+                "ac8eeadc000cfcde"
+            ]
+        ]
+    },
+    {
+        "id": "a95b84d6e7310980",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "0 a false",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "str",
+                "to": "HOLA",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 520,
+        "wires": [
+            [
+                "33a98f03a271117a",
+                "1e8d22bda62e26b0",
+                "3e5c1afa694d5abc"
+            ]
+        ],
+        "info": "transformamos 0 a false y 1 a HOLA,  SOLO PASA false para encender el relay cuando regresa la luz con un delay de 7s"
+    },
+    {
+        "id": "6bf15b1f55515c1d",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "str",
+                "to": "HOLA",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 1060,
+        "wires": [
+            [
+                "111626268d132e1c",
+                "692dc831946e92f7",
+                "41350f9d2e0c8d9b"
+            ]
+        ]
+    },
+    {
+        "id": "75b5ee92221f2c2e",
+        "type": "delay",
+        "z": "068dede10c89541d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 620,
+        "y": 1060,
+        "wires": [
+            [
+                "c582f961580ccd0e"
+            ]
+        ]
+    },
+    {
+        "id": "2f10edb2790f111f",
+        "type": "delay",
+        "z": "068dede10c89541d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "7",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 360,
+        "y": 520,
+        "wires": [
+            [
+                "a95b84d6e7310980"
+            ]
+        ]
+    },
+    {
+        "id": "5c94ce932f9b8f36",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "1 en true",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "plantaOFF",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "str",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 600,
+        "wires": [
+            [
+                "33a98f03a271117a",
+                "1e8d22bda62e26b0",
+                "dc5c44f77ac54f75"
+            ]
+        ],
+        "info": "transformamos 1 a true y 0 a HOLA,  SOLO PASA TRUE para apagar el relay despues de que piesde la luz con un delay de 1s"
+    },
+    {
+        "id": "30fb72b6443ae9ca",
+        "type": "delay",
+        "z": "068dede10c89541d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 360,
+        "y": 580,
+        "wires": [
+            [
+                "5c94ce932f9b8f36"
+            ]
+        ]
+    },
+    {
+        "id": "b7b89d4f0adffb30",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 740,
+        "wires": [
+            [
+                "27cb9e1fa7952bbc",
+                "f027e051488e975e"
+            ]
+        ]
+    },
+    {
+        "id": "e40a270cf8a3054c",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "str",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1280,
+        "wires": [
+            [
+                "ab8cfd1b800e95dc",
+                "8f603594ab1ac6b1",
+                "72383d1d4145bd83",
+                "e48da46e44e5f8d5"
+            ]
+        ]
+    },
+    {
+        "id": "0777c15bf8bc51a5",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "HOLA",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "str",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 1220,
+        "wires": [
+            [
+                "111626268d132e1c",
+                "692dc831946e92f7",
+                "41350f9d2e0c8d9b"
+            ]
+        ]
+    },
+    {
+        "id": "55b18bcd245a15c1",
+        "type": "delay",
+        "z": "068dede10c89541d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "0.30",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 410,
+        "y": 1220,
+        "wires": [
+            [
+                "0777c15bf8bc51a5"
+            ]
+        ]
+    },
+    {
+        "id": "7c57de93f3ebf072",
+        "type": "delay",
+        "z": "068dede10c89541d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "6",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 360,
+        "y": 920,
+        "wires": [
+            [
+                "28b59b627926cd23"
+            ]
+        ]
+    },
+    {
+        "id": "28b59b627926cd23",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "1",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "str",
+                "to": "HOLA",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 920,
+        "wires": [
+            [
+                "111626268d132e1c",
+                "692dc831946e92f7",
+                "41350f9d2e0c8d9b"
+            ]
+        ]
+    },
+    {
+        "id": "27cb9e1fa7952bbc",
+        "type": "clock-generator",
+        "z": "068dede10c89541d",
+        "name": "",
+        "topic": "",
+        "period": "1",
+        "output": "2",
+        "init": false,
+        "x": 700,
+        "y": 820,
+        "wires": [
+            [
+                "9dad6a31a456970e",
+                "c10b8d54f93ef726",
+                "bb2da5f435c502f8"
+            ],
+            [
+                "9dad6a31a456970e",
+                "c10b8d54f93ef726",
+                "bb2da5f435c502f8"
+            ]
+        ]
+    },
+    {
+        "id": "f027e051488e975e",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 700,
+        "wires": [
+            [
+                "9dad6a31a456970e",
+                "c10b8d54f93ef726",
+                "3896d51f26795c22"
+            ]
+        ]
+    },
+    {
+        "id": "9dad6a31a456970e",
+        "type": "ui_led",
+        "z": "068dede10c89541d",
+        "group": "ba93b268.a938a",
+        "order": 3,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#248bf9",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#ff0000",
+                "value": "1",
+                "valueType": "num"
+            },
+            {
+                "color": "#ffeb0a",
+                "value": "0",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "LED ICE",
+        "x": 980,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "640ce3a72d9f0815",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "str",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 1140,
+        "wires": [
+            [
+                "692dc831946e92f7"
+            ]
+        ]
+    },
+    {
+        "id": "8f603594ab1ac6b1",
+        "type": "ui_led",
+        "z": "068dede10c89541d",
+        "group": "36792de4d163b36c",
+        "order": 4,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#f00060",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "LED PLANTA",
+        "x": 740,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "692dc831946e92f7",
+        "type": "ui_led",
+        "z": "068dede10c89541d",
+        "group": "84889070814cc770",
+        "order": 11,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "1",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "0",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "LED RELE PLANTA",
+        "x": 1360,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "3e5c1afa694d5abc",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 900,
+        "y": 520,
+        "wires": [
+            [
+                "ca091f0a5d9696e8",
+                "a125bc3d40b93638"
+            ]
+        ]
+    },
+    {
+        "id": "ca091f0a5d9696e8",
+        "type": "ui_switch",
+        "z": "068dede10c89541d",
+        "name": "",
+        "label": "Transferencia ",
+        "tooltip": "",
+        "group": "84889070814cc770",
+        "order": 14,
+        "width": 3,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "style": "",
+        "onvalue": "false",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "true",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 1140,
+        "y": 380,
+        "wires": [
+            [
+                "50fa823c0e80ad9f",
+                "a125bc3d40b93638"
+            ]
+        ]
+    },
+    {
+        "id": "3adc62f26097cbaf",
+        "type": "switch",
+        "z": "068dede10c89541d",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 750,
+        "y": 440,
+        "wires": [
+            [],
+            [
+                "22b3e3455c07b916"
+            ]
+        ]
+    },
+    {
+        "id": "625459ccb17f3303",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 440,
+        "wires": [
+            [
+                "3adc62f26097cbaf"
+            ]
+        ]
+    },
+    {
+        "id": "22b3e3455c07b916",
+        "type": "delay",
+        "z": "068dede10c89541d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 940,
+        "y": 440,
+        "wires": [
+            [
+                "ca091f0a5d9696e8"
+            ]
+        ]
+    },
+    {
+        "id": "c582f961580ccd0e",
+        "type": "switch",
+        "z": "068dede10c89541d",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 770,
+        "y": 1060,
+        "wires": [
+            [
+                "6bf15b1f55515c1d"
+            ]
+        ]
+    },
+    {
+        "id": "4d558375311d5fc7",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1060,
+        "wires": [
+            [
+                "75b5ee92221f2c2e"
+            ]
+        ]
+    },
+    {
+        "id": "62c36efdc26fb4ad",
+        "type": "clock-generator",
+        "z": "068dede10c89541d",
+        "name": "",
+        "topic": "",
+        "period": "1",
+        "output": "2",
+        "init": false,
+        "x": 1560,
+        "y": 1020,
+        "wires": [
+            [
+                "b841d1de6f238a1d",
+                "b13ee7371f95d942",
+                "6e2afea00e642219"
+            ],
+            [
+                "b841d1de6f238a1d",
+                "b13ee7371f95d942"
+            ]
+        ]
+    },
+    {
+        "id": "b841d1de6f238a1d",
+        "type": "ui_led",
+        "z": "068dede10c89541d",
+        "group": "84889070814cc770",
+        "order": 31,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#808080",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            },
+            {
+                "color": "#0000ff",
+                "value": "0",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "LED PLANTA INTERMITENTES",
+        "x": 1870,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "41350f9d2e0c8d9b",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1320,
+        "y": 1060,
+        "wires": [
+            [
+                "62c36efdc26fb4ad",
+                "93e29f6dc1a4e332"
+            ]
+        ]
+    },
+    {
+        "id": "93e29f6dc1a4e332",
+        "type": "delay",
+        "z": "068dede10c89541d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "0.30",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1550,
+        "y": 1080,
+        "wires": [
+            [
+                "b841d1de6f238a1d",
+                "6e2afea00e642219"
+            ]
+        ]
+    },
+    {
+        "id": "b13ee7371f95d942",
+        "type": "ui_led",
+        "z": "068dede10c89541d",
+        "group": "84889070814cc770",
+        "order": 28,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#000000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "ENERATING LED",
+        "x": 1770,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "545d6d34161cd57c",
+        "type": "ui_text",
+        "z": "068dede10c89541d",
+        "group": "84889070814cc770",
+        "order": 29,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "GENERATING",
+        "format": "",
+        "layout": "col-center",
+        "x": 1960,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "a125bc3d40b93638",
+        "type": "ui_led",
+        "z": "068dede10c89541d",
+        "group": "84889070814cc770",
+        "order": 13,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "true",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "false",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "TRANSFERENCIA",
+        "x": 1230,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "ee715cd2bd8b56fc",
+        "type": "ui_gauge",
+        "z": "068dede10c89541d",
+        "name": "",
+        "group": "36792de4d163b36c",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "VOLTAJE",
+        "label": "V",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "140",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 940,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "72383d1d4145bd83",
+        "type": "random",
+        "z": "068dede10c89541d",
+        "name": "",
+        "low": "117",
+        "high": "123",
+        "inte": "true",
+        "property": "payload",
+        "x": 720,
+        "y": 1420,
+        "wires": [
+            [
+                "ee715cd2bd8b56fc",
+                "d58887c1058966fe"
+            ]
+        ]
+    },
+    {
+        "id": "4588c46e8d5dee4f",
+        "type": "ui_gauge",
+        "z": "068dede10c89541d",
+        "name": "",
+        "group": "36792de4d163b36c",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "AMPERAJE",
+        "label": "A",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "25",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 950,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "e48da46e44e5f8d5",
+        "type": "random",
+        "z": "068dede10c89541d",
+        "name": "",
+        "low": "3.3",
+        "high": "6.8",
+        "inte": "true",
+        "property": "payload",
+        "x": 720,
+        "y": 1380,
+        "wires": [
+            [
+                "4588c46e8d5dee4f"
+            ]
+        ]
+    },
+    {
+        "id": "d58887c1058966fe",
+        "type": "ui_chart",
+        "z": "068dede10c89541d",
+        "name": "",
+        "group": "36792de4d163b36c",
+        "order": 8,
+        "width": 5,
+        "height": 4,
+        "label": "Voltaje",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 930,
+        "y": 1440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c10b8d54f93ef726",
+        "type": "ui_led",
+        "z": "068dede10c89541d",
+        "group": "ba93b268.a938a",
+        "order": 2,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#248bf9",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#ff0000",
+                "value": "1",
+                "valueType": "num"
+            },
+            {
+                "color": "#ffeb0a",
+                "value": "0",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "LED ICE",
+        "x": 980,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "c4357dfe8b99e1be",
+        "type": "ui_text",
+        "z": "068dede10c89541d",
+        "group": "84889070814cc770",
+        "order": 10,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "RELE ICE",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 930,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "fbbd920f791115a2",
+        "type": "ui_gauge",
+        "z": "068dede10c89541d",
+        "name": "",
+        "group": "ba93b268.a938a",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "VOLTAJE",
+        "label": "V",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "140",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 1920,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "2e5857fab548800b",
+        "type": "ui_gauge",
+        "z": "068dede10c89541d",
+        "name": "",
+        "group": "ba93b268.a938a",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "AMPERAJE",
+        "label": "A",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 1750,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "74836b6ff4797ccc",
+        "type": "random",
+        "z": "068dede10c89541d",
+        "name": "",
+        "low": "113",
+        "high": "124",
+        "inte": "true",
+        "property": "payload",
+        "x": 1740,
+        "y": 680,
+        "wires": [
+            [
+                "fbbd920f791115a2"
+            ]
+        ]
+    },
+    {
+        "id": "f58dc157b98a0cd7",
+        "type": "random",
+        "z": "068dede10c89541d",
+        "name": "",
+        "low": "3",
+        "high": "5",
+        "inte": "true",
+        "property": "payload",
+        "x": 1560,
+        "y": 600,
+        "wires": [
+            [
+                "2e5857fab548800b"
+            ]
+        ]
+    },
+    {
+        "id": "af5653384bdfc5ae",
+        "type": "clock-generator",
+        "z": "068dede10c89541d",
+        "name": "",
+        "topic": "",
+        "period": "15",
+        "output": "1",
+        "init": false,
+        "x": 1360,
+        "y": 640,
+        "wires": [
+            [
+                "f58dc157b98a0cd7",
+                "8c2a1107a0ec313c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "3896d51f26795c22",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1140,
+        "y": 700,
+        "wires": [
+            [
+                "af5653384bdfc5ae",
+                "bb2da5f435c502f8"
+            ]
+        ]
+    },
+    {
+        "id": "8c2a1107a0ec313c",
+        "type": "delay",
+        "z": "068dede10c89541d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1560,
+        "y": 680,
+        "wires": [
+            [
+                "74836b6ff4797ccc"
+            ]
+        ]
+    },
+    {
+        "id": "1447a7113bc6e446",
+        "type": "ui_text",
+        "z": "068dede10c89541d",
+        "group": "84889070814cc770",
+        "order": 12,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "RELE PLANTA",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 1560,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "6e2afea00e642219",
+        "type": "ui_led",
+        "z": "068dede10c89541d",
+        "group": "84889070814cc770",
+        "order": 30,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#808080",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            },
+            {
+                "color": "#0000ff",
+                "value": "0",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "LED PLANTA INTERMITENTES",
+        "x": 1870,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "dc5c44f77ac54f75",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1140,
+        "y": 600,
+        "wires": [
+            [
+                "af5653384bdfc5ae"
+            ]
+        ]
+    },
+    {
+        "id": "55ebfa96b1bedf8e",
+        "type": "inject",
+        "z": "068dede10c89541d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "true",
+                "vt": "bool"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1250,
+        "y": 100,
+        "wires": [
+            [
+                "d81ddad7c4c15290"
+            ]
+        ]
+    },
+    {
+        "id": "d81ddad7c4c15290",
+        "type": "ui_clock",
+        "z": "068dede10c89541d",
+        "name": "",
+        "group": "84889070814cc770",
+        "order": 2,
+        "width": 2,
+        "height": 2,
+        "x": 1450,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "027d8ceca486c85b",
+        "type": "rpi-gpio out",
+        "z": "068dede10c89541d",
+        "name": "TRANSFER # 15",
+        "pin": "22",
+        "set": true,
+        "level": "1",
+        "freq": "",
+        "out": "out",
+        "x": 1630,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "50fa823c0e80ad9f",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1420,
+        "y": 440,
+        "wires": [
+            [
+                "027d8ceca486c85b"
+            ]
+        ]
+    },
+    {
+        "id": "f48ce1783fdeda3f",
+        "type": "subflow:f116165dd87bee19",
+        "z": "068dede10c89541d",
+        "name": "",
+        "env": [],
+        "x": 390,
+        "y": 380,
+        "wires": [
+            [
+                "ca091f0a5d9696e8"
+            ]
+        ]
+    },
+    {
+        "id": "cf1beec632d03c94",
+        "type": "ui_led",
+        "z": "068dede10c89541d",
+        "group": "84889070814cc770",
+        "order": 6,
+        "width": 1,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#ff0000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "PLANTA ON ",
+        "x": 430,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "c267a8de413ce5e0",
+        "type": "ui_text",
+        "z": "068dede10c89541d",
+        "group": "84889070814cc770",
+        "order": 7,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "SYSTEM STATUS",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "x": 610,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "24b260f2ce1c1f6b",
+        "type": "inject",
+        "z": "068dede10c89541d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "sudo reboot",
+        "payloadType": "str",
+        "x": 430,
+        "y": 100,
+        "wires": [
+            [
+                "c2c62f2a3f90f014"
+            ]
+        ]
+    },
+    {
+        "id": "c2c62f2a3f90f014",
+        "type": "exec",
+        "z": "068dede10c89541d",
+        "command": "sudo reboot now",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 930,
+        "y": 100,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2a4357fc39205b54",
+        "type": "link in",
+        "z": "068dede10c89541d",
+        "name": "sistema-reiniciar",
+        "links": [
+            "7c365e397e88058e"
+        ],
+        "x": 755,
+        "y": 100,
+        "wires": [
+            [
+                "c2c62f2a3f90f014"
+            ]
+        ]
+    },
+    {
+        "id": "65d990360a73181d",
+        "type": "comment",
+        "z": "068dede10c89541d",
+        "name": "reinicio",
+        "info": "reinicio del sistema ",
+        "x": 410,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "543bba0592230759",
+        "type": "ui_button",
+        "z": "068dede10c89541d",
+        "name": "",
+        "group": "0e600bbbe8304e71",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Reiniciar",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "¿Reiniciar?",
+        "payloadType": "str",
+        "topic": "",
+        "x": 420,
+        "y": 160,
+        "wires": [
+            [
+                "7c0afce540b719dd"
+            ]
+        ]
+    },
+    {
+        "id": "98b0bce1995b5005",
+        "type": "comment",
+        "z": "068dede10c89541d",
+        "name": "relog",
+        "info": "",
+        "x": 1350,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "7c365e397e88058e",
+        "type": "link out",
+        "z": "068dede10c89541d",
+        "name": "from-ui-reiniciar",
+        "links": [
+            "2a4357fc39205b54"
+        ],
+        "x": 725,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "7c0afce540b719dd",
+        "type": "ui_toast",
+        "z": "068dede10c89541d",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "",
+        "name": "",
+        "x": 590,
+        "y": 160,
+        "wires": [
+            [
+                "7c365e397e88058e"
+            ]
+        ]
+    },
+    {
+        "id": "bb2da5f435c502f8",
+        "type": "rpi-gpio out",
+        "z": "068dede10c89541d",
+        "name": "",
+        "pin": "24",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 1180,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "765fd78ce6241d88",
+        "type": "rpi-gpio out",
+        "z": "068dede10c89541d",
+        "name": "",
+        "pin": "12",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 620,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "ac8eeadc000cfcde",
+        "type": "change",
+        "z": "068dede10c89541d",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 980,
+        "wires": [
+            [
+                "765fd78ce6241d88"
+            ]
+        ]
+    },
+    {
+        "id": "84889070814cc770",
+        "type": "ui_group",
+        "name": "CONTROL",
+        "tab": "99b27e91bcc6aec5",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false
+    },
+    {
+        "id": "36792de4d163b36c",
+        "type": "ui_group",
+        "name": "PLANTA",
+        "tab": "99b27e91bcc6aec5",
+        "order": 4,
+        "disp": true,
+        "width": 5,
+        "collapse": false
+    },
+    {
+        "id": "ba93b268.a938a",
+        "type": "ui_group",
+        "name": "ICE",
+        "tab": "99b27e91bcc6aec5",
+        "order": 1,
+        "disp": true,
+        "width": 4,
+        "collapse": false
+    }
+]
