@@ -38,12 +38,13 @@ estado de la planta eléctrica y el suministro de energía._
 
 _Instalacion de librerias_
 
- -node-red-dashboard
- -node-red-contrib-clock-generator
- -node-red-contrib-ui-clock
- -node-red-contrib-ui-led
- -node-red-node-random
+ - node-red-dashboard
+ - node-red-contrib-clock-generator
+ - node-red-contrib-ui-clock
+ - node-red-contrib-ui-led
+ - node-red-node-random
 
+_Paso a paso_
 
 - Abre tu navegador web y accede a la interfaz de Node-RED. Por lo general, 
 puedes hacerlo ingresando la dirección IP de tu dispositivo seguida del 
@@ -66,6 +67,7 @@ de que la librería se ha instalado exitosamente.
 
 ### Instalación 🔧
 
+_Paso a paso_
 
 - Descarga el archivo EncendidoPlanta.json
 - Abre el entorno de Node-RED en tu navegador web. Puedes acceder a él ingresando 
@@ -87,24 +89,27 @@ en el flujo. Una vez que se complete la importación, verás el flujo importado 
 
 
 
-## Construido con 🛠️
+## Equipos del Proyecto
 
 
-En el proyecto de la planta eléctrica y Node-RED, se integran varios componentes clave
-para su funcionamiento. Se utiliza una Raspberry Pi 4 como la plataforma de control central,
+- En esté proyecto de la planta eléctrica y Node-RED, se integran varios componentes clave
+para su funcionamiento. 
+- Se utiliza una Raspberry Pi 4 como la plataforma de control central,
 que ejecuta el software Node-RED y coordina todas las acciones del sistema.
-Para controlar el encendido y apagado de diferentes dispositivos, se utilizan dos bloques
+- Para controlar el encendido y apagado de diferentes dispositivos, se utilizan dos bloques
 de relé de 4 canales cada uno. Estos relés permiten activar o desactivar múltiples circuitos
 eléctricos de manera segura y controlada.
-Además de los bloques de relé, se emplean dos relés individuales para controlar los contactores.
-Los contactores son dispositivos electromecánicos que permiten establecer o interrumpir el
-flujo de corriente hacia la planta eléctrica. Los relés individuales se utilizan para activar
+- Además de los bloques de relé, se emplean dos relés individuales para controlar los contactores.
+- Los contactores son dispositivos electromecánicos que permiten establecer o interrumpir el
+flujo de corriente hacia la planta eléctrica. 
+- Los relés individuales se utilizan para activar
 las bobinas de los contactores, permitiendo así el encendido o apagado del sistema de respaldo
 de energía.
-Es importante mencionar que se utiliza una fuente de alimentación de 5V con una capacidad de
+- Es importante mencionar que se utiliza una fuente de alimentación de 5V con una capacidad de
 corriente de 10A para garantizar un suministro estable y suficiente para todos los componentes
-del proyecto. Esta fuente de alimentación proporciona la energía necesaria para alimentar tanto
-la Raspberry Pi como los relés y contactores.
+del proyecto. 
+- Esta fuente de alimentación proporciona la energía necesaria para alimentar tanto
+la Raspberry Pi como los relés.
 
 
 _Equipos_
